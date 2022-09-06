@@ -1,0 +1,16 @@
+body {
+  background-image: url(https://wallpaperaccess.com/full/340434.png);
+}
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: +4;
+}
+
+.signupheading {
+  width: 39rem;
+  text-align: center;
+  font-family: auto;
+  font-weight: bolder;
+  box-shadow: inset -1px 1px 20px 0px black;
+}
