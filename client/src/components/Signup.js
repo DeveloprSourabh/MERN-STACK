@@ -1,9 +1,10 @@
-import { useState, useHistory } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import "./style.css";
 
 const Signup = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     name: "",
@@ -48,7 +49,7 @@ const Signup = () => {
       window.alert("Register Successfuly");
       console.log("Register Successfuly");
 
-      history.push("/login");
+      navigate("/login");
     }
   };
 
@@ -57,88 +58,92 @@ const Signup = () => {
       <div style={{ padding: "15rem 5rem 22rem 40rem" }} className="ctr">
         <h1 className="signupheading">SIGN UP</h1>
         <form method="POST">
-          <div class="form-group row">
-            <div class="col-sm-6 mt-5 ml-5">
+          <div className="form-group row">
+            <div className="col-sm-6 mt-5 ml-5">
               <input
                 placeholder="Name"
                 name="name"
                 value={user.name}
                 onChange={handleInputs}
                 type="input"
-                class="form-control"
+                className="form-control"
                 id="inputPassword3"
               />
             </div>
           </div>
-          <div class="form-group row">
-            <div class="col-sm-6 ml-5">
+          <div className="form-group row">
+            <div className="col-sm-6 ml-5">
               <input
                 placeholder="Email"
                 name="email"
-                value={user.name}
+                value={user.email}
                 onChange={handleInputs}
                 type="input"
-                class="form-control"
-                id="inputPassword3"
+                className="form-control"
+                id="inputPassword4"
               />
             </div>
           </div>
-          <div class="form-group row">
-            <div class="col-sm-6  ml-5">
+          <div className="form-group row">
+            <div className="col-sm-6  ml-5">
               <input
                 placeholder="Work"
                 value={user.work}
                 onChange={handleInputs}
                 type="input"
                 name="work"
-                class="form-control"
-                id="inputPassword3"
+                className="form-control"
+                id="inputPassword5"
               />
             </div>
           </div>
-          <div class="form-group row">
-            <div class="col-sm-6 ml-5">
+          <div className="form-group row">
+            <div className="col-sm-6 ml-5">
               <input
                 placeholder="Phone"
                 value={user.phone}
                 name="phone"
                 onChange={handleInputs}
                 type="number"
-                class="form-control"
-                id="inputPassword3"
+                className="form-control"
+                id="inputPassword6"
               />
             </div>
           </div>
-          <div class="form-group row">
-            <div class="col-sm-6 ml-5">
+          <div className="form-group row">
+            <div className="col-sm-6 ml-5">
               <input
                 placeholder="Password"
                 value={user.password}
                 onChange={handleInputs}
                 type="password"
                 name="password"
-                class="form-control"
-                id="inputPassword3"
+                className="form-control"
+                id="inputPassword7"
               />
             </div>
           </div>
-          <div class="form-group row">
-            <div class="col-sm-6 ml-5">
+          <div className="form-group row">
+            <div className="col-sm-6 ml-5">
               <input
                 placeholder="Confirm Password"
                 value={user.cpassword}
                 name="cpassword"
                 onChange={handleInputs}
                 type="password"
-                class="form-control"
-                id="inputPassword3"
+                className="form-control"
+                id="inputPassword8"
               />
             </div>
           </div>
 
-          <div style={{ textAlign: "center" }} class="form-group row">
-            <div class="ml-5 col-sm-6">
-              <button type="submit" class="btn btn-primary" onClick={PostData}>
+          <div style={{ textAlign: "center" }} className="form-group row">
+            <div className="ml-5 col-sm-6">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={PostData}
+              >
                 Sign up
               </button>
             </div>
