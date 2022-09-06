@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const bcrypt = require("bcryptjs");
 
@@ -86,6 +87,9 @@ router.post("/signin", async (req, res) => {
     // console.log(userLogin);
     if (userLogin) {
       const isMatch = await bcrypt.compare(password, userLogin.password);
+
+      const token = await userLogin.generateAuthToken();
+      res.cookie("jwtoken", token);
 
       if (!isMatch) {
         res.json({ Error: "user error" });
