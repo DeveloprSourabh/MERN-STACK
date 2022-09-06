@@ -1,4 +1,6 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
+
 const router = express.Router();
 require("../db/conn");
 const User = require("../model/userSchema");
@@ -14,20 +16,22 @@ router.post("/register", async (req, res) => {
   }
 
   try {
-    const userExist = User.findOne({ email: email });
+    const userExist = await User.findOne({ email: email });
 
     if (userExist) {
       return res.status(422).json({ error: "email already exist" });
-    }
-
-    const user = new User({ name, email, password, cpassword, phone, work });
-
-    const userRegister = await user.save();
-
-    if (userRegister) {
-      res.status(201).json({ message: "user registered successfuly." });
+    } else if (password != cpassword) {
+      return res.status(422).json({ error: "password are not matching" });
     } else {
-      res.status(500).json({ error: "FAILED TO REGISTERED" });
+      const user = new User({ name, email, password, cpassword, phone, work });
+
+      const userRegister = await user.save();
+
+      if (userRegister) {
+        res.status(201).json({ message: "user registered successfuly." });
+      } else {
+        res.status(500).json({ error: "FAILED TO REGISTERED" });
+      }
     }
   } catch (error) {
     console.log(err);
@@ -79,11 +83,17 @@ router.post("/signin", async (req, res) => {
     }
 
     const userLogin = await User.findOne({ email: email });
-    console.log(userLogin);
-    if (!userLogin) {
-      res.json({ Error: "user error" });
+    // console.log(userLogin);
+    if (userLogin) {
+      const isMatch = await bcrypt.compare(password, userLogin.password);
+
+      if (!isMatch) {
+        res.json({ Error: "user error" });
+      } else {
+        res.json({ message: "user Sigin successfuly" });
+      }
     } else {
-      res.json({ message: "user Sigin successfuly" });
+      res.json({ Error: "user error" });
     }
   } catch (err) {
     console.log(err);
