@@ -1,25 +1,22 @@
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
-const DB =
-  "mongodb+srv://developrsourabh:saurabhlandergr@cluster0.x0nlpqg.mongodb.net/mernstack?retryWrites=true&w=majority";
+dotenv.config({ path: "./config.env" });
+require("./db/conn");
 
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-  })
-  .then(() => {
-    console.log("CONNECTION IS SUCCESSFULLY");
-  })
-  .catch((ERR) => console.log(ERR));
+app.use(express.json());
+
+app.use(require("./router/auth"));
+// const User = require("./model/userSchema");
 
 const middleware = (req, res, next) => {
   console.log("HELLO I AM HOSHIYAR.");
   next();
 };
-// middleware();
-app.get("/", middleware, (req, res) => {
+
+app.get("/about", middleware, (req, res) => {
   res.send("HELLO WORLD FROM SOURABH.");
 });
 
