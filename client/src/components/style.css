@@ -8,9 +8,40 @@ body {
 }
 
 .signupheading {
-  width: 39rem;
+  width: 36rem;
+  margin-left: 3rem;
   text-align: center;
   font-family: auto;
   font-weight: bolder;
   box-shadow: inset -1px 1px 20px 0px black;
+}
+.home-page {
+  text-align: center;
+  position: relative;
+  top: 23rem;
+}
+
+.wlcm {
+  color: #f9f9f9;
+
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.error-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+.error-actions {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.error-actions .btn {
+  margin-right: 10px;
+}
+
+.col-md-12 {
+  font-size: 2rem;
+  color: black;
+  font-family: cursive;
 }

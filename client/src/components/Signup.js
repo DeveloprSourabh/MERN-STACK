@@ -21,7 +21,7 @@ const Signup = () => {
             <div class="col-sm-6 ml-5">
               <input
                 placeholder="Email"
-                type="password"
+                type="input"
                 class="form-control"
                 id="inputPassword3"
               />
@@ -51,7 +51,7 @@ const Signup = () => {
             <div class="col-sm-6 ml-5">
               <input
                 placeholder="Password"
-                type="input"
+                type="password"
                 class="form-control"
                 id="inputPassword3"
               />
@@ -61,7 +61,7 @@ const Signup = () => {
             <div class="col-sm-6 ml-5">
               <input
                 placeholder="Confirm Password"
-                type="input"
+                type="password"
                 class="form-control"
                 id="inputPassword3"
               />
@@ -71,7 +71,7 @@ const Signup = () => {
           <div style={{ textAlign: "center" }} class="form-group row">
             <div class="ml-5 col-sm-6">
               <button type="submit" class="btn btn-primary">
-                Sign in
+                Sign up 
               </button>
             </div>
           </div>
